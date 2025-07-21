@@ -1,3 +1,6 @@
+# ESLint
+.eslintcache
+
 # Dotenv
 .env
 .env*local
