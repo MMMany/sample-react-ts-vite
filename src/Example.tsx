@@ -2,11 +2,19 @@ import axios from "axios";
 import { useQuery } from "@tanstack/react-query";
 import "./Example.css";
 
+interface RepoData {
+  full_name: string;
+  description: string;
+  subscribers_count: number;
+  stargazers_count: number;
+  forks_count: number;
+}
+
 function Example() {
-  const { isPending, error, data, isFetching } = useQuery({
+  const { isPending, error, data, isFetching } = useQuery<RepoData>({
     queryKey: ["repoData"],
     queryFn: async () => {
-      const response = await axios.get("https://api.github.com/repos/TanStack/query");
+      const response = await axios.get<RepoData>("https://api.github.com/repos/TanStack/query");
       return response.data ?? {};
     },
   });
