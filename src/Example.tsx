@@ -20,9 +20,9 @@ function Example() {
       <h1>React Query Example</h1>
       <h2>Repo Name : {data.full_name}</h2>
       <p>{data.description}</p>
-      <p className="font-bold py-1">Subs : {data.subscribers_count}</p>
-      <p className="font-bold py-1">Stars : {data.stargazers_count}</p>
-      <p className="font-bold py-1">Forks : {data.forks_count}</p>
+      <p className="py-1 font-bold">Subs : {data.subscribers_count}</p>
+      <p className="py-1 font-bold">Stars : {data.stargazers_count}</p>
+      <p className="py-1 font-bold">Forks : {data.forks_count}</p>
       <div>{isFetching ? "Updating..." : ""}</div>
     </div>
   );

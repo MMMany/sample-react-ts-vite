@@ -5,6 +5,7 @@
  * @type {import('prettier').Config}
  */
 const config = {
+  plugins: ["prettier-plugin-tailwindcss"],
   trailingComma: "all",
   singleQuote: false,
   tabWidth: 2,
