@@ -1,9 +1,10 @@
 import { useState } from "react";
-import "./App.css";
 import useCounter from "./stores/counter";
 import { QueryClientProvider, QueryClient } from "@tanstack/react-query";
 import Example from "./Example";
-import Button from "./components/ui/Button";
+import Button from "@mui/material/Button";
+import Typography from "@mui/material/Typography";
+import Box from "@mui/material/Box";
 
 const queryClient = new QueryClient();
 
@@ -13,21 +14,30 @@ function App() {
 
   return (
     <QueryClientProvider client={queryClient}>
-      <div className="flex flex-col gap-6 p-2">
-        <p className="font-bold">Hello World!</p>
-        <Button onClick={() => setShow(true)}>Show</Button>
-        {show && <p className="outline-6 outline-blue-500">Show hidden text!</p>}
-        <div>
-          <h1>Count : {count}</h1>
-          {/* <button onClick={() => setCount(count + 1)}>+</button> */}
-          <div>
-            <Button onClick={() => increment()}>+</Button>
-            <Button onClick={() => decrement()}>-</Button>
-            <Button onClick={() => reset()}>Reset</Button>
-          </div>
-        </div>
+      <Box sx={{ display: "flex", flexDirection: "column", gap: 3, p: 2 }}>
+        <Typography variant="h6" component="p" sx={{ fontWeight: "bold" }}>
+          Hello World!
+        </Typography>
+        <Button variant="contained" onClick={() => setShow(true)}>
+          Show
+        </Button>
+        {show && <Typography sx={{ outline: "6px solid blue" }}>Show hidden text!</Typography>}
+        <Box>
+          <Typography variant="h1">Count : {count}</Typography>
+          <Box sx={{ display: "flex", gap: 1 }}>
+            <Button variant="contained" onClick={() => increment()}>
+              +
+            </Button>
+            <Button variant="contained" onClick={() => decrement()}>
+              -
+            </Button>
+            <Button variant="contained" onClick={() => reset()}>
+              Reset
+            </Button>
+          </Box>
+        </Box>
         <Example />
-      </div>
+      </Box>
     </QueryClientProvider>
   );
 }

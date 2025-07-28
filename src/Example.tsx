@@ -1,6 +1,7 @@
 import axios from "axios";
 import { useQuery } from "@tanstack/react-query";
-import "./Example.css";
+import Typography from "@mui/material/Typography";
+import Box from "@mui/material/Box";
 
 interface RepoData {
   full_name: string;
@@ -19,20 +20,20 @@ function Example() {
     },
   });
 
-  if (isPending) return <div>"Loading..."</div>;
+  if (isPending) return <Box>"Loading..."</Box>;
 
-  if (error) return <div>`An error has occurred: ${error.message}`</div>;
+  if (error) return <Box>`An error has occurred: ${error.message}`</Box>;
 
   return (
-    <div id="react-query-example">
-      <h1>React Query Example</h1>
-      <h2>Repo Name : {data.full_name}</h2>
-      <p>{data.description}</p>
-      <p className="py-1 font-bold">Subs : {data.subscribers_count}</p>
-      <p className="py-1 font-bold">Stars : {data.stargazers_count}</p>
-      <p className="py-1 font-bold">Forks : {data.forks_count}</p>
-      <div>{isFetching ? "Updating..." : ""}</div>
-    </div>
+    <Box id="react-query-example">
+      <Typography variant="h4">React Query Example</Typography>
+      <Typography variant="h5">Repo Name : {data.full_name}</Typography>
+      <Typography>{data.description}</Typography>
+      <Typography sx={{ py: 1, fontWeight: "bold" }}>Subs : {data.subscribers_count}</Typography>
+      <Typography sx={{ py: 1, fontWeight: "bold" }}>Stars : {data.stargazers_count}</Typography>
+      <Typography sx={{ py: 1, fontWeight: "bold" }}>Forks : {data.forks_count}</Typography>
+      <Box>{isFetching ? "Updating..." : ""}</Box>
+    </Box>
   );
 }
 
