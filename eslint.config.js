@@ -7,28 +7,34 @@ import { globalIgnores } from "eslint/config";
 import configPrettier from "eslint-config-prettier";
 import reactX from "eslint-plugin-react-x";
 import reactDom from "eslint-plugin-react-dom";
+import importPlugin from "eslint-plugin-import";
 
 export default tseslint.config([
   globalIgnores(["dist", "coverage", "node_modules", ".husky"]),
   {
-    files: ["**/*.{ts,tsx}"],
+    files: ["src/**/*.{ts,tsx}", "test/**/*.{ts,tsx}"],
     extends: [
       js.configs.recommended,
-      // tseslint.configs.recommended,
       ...tseslint.configs.recommendedTypeChecked,
-      // ...tseslint.configs.strictTypeChecked,
-      // ...tseslint.configs.stylisticTypeChecked,
       reactHooks.configs["recommended-latest"],
       reactRefresh.configs.vite,
       reactX.configs["recommended-typescript"],
       reactDom.configs["recommended"],
+      importPlugin.flatConfigs.recommended,
+      importPlugin.flatConfigs.typescript,
     ],
     languageOptions: {
       ecmaVersion: "latest",
+      sourceType: "module",
       globals: globals.browser,
       parserOptions: {
         project: ["./tsconfig.node.json", "./tsconfig.app.json"],
         tsconfigRootDir: import.meta.dirname,
+      },
+    },
+    settings: {
+      "import/resolver": {
+        typescript: true,
       },
     },
   },
