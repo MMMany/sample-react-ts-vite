@@ -1,69 +1,60 @@
-# React + TypeScript + Vite
+# Sample "React + MUI + TypeScript + Vite" project
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+This is sample project for "React + MUI" frontend application.
 
-Currently, two official plugins are available:
+## Requirements
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- node v22.x
 
-## Expanding the ESLint configuration
+## Core packages
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+- Application
+  - `react`
+  - `react-router`
+  - `@mui/material`
+  - `zustand`
+  - `@tanstack/react-query`
+  - `i18next`
+  - `react-i18next`
+- Bundler
+  - `vite`
+- Dev Environments
+  - `eslint`
+  - `prettier`
+  - `husky`
+  - `lint-staged`
+- Test
+  - `vitest`
+  - `msw`
+  - `@testing-library/react`
 
-```js
-export default tseslint.config([
-  globalIgnores(["dist"]),
-  {
-    files: ["**/*.{ts,tsx}"],
-    extends: [
-      // Other configs...
+---
 
-      // Remove tseslint.configs.recommended and replace with this
-      ...tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      ...tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      ...tseslint.configs.stylisticTypeChecked,
+## Structure
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ["./tsconfig.node.json", "./tsconfig.app.json"],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-]);
+Reference : https://feature-sliced.design/kr/docs/get-started/overview
+![alt text](docs/fsd_arch.png)
+
+| Order |  Layer   | Description                                                         |
+| :---: | :------: | ------------------------------------------------------------------- |
+|   1   |   app    | application settings                                                |
+|   2   |  pages   | full-page components                                                |
+|   3   | widgets  | independent components<br>(like 'Header', 'Footer', 'AppMenu', etc) |
+|   4   | services | core business logic                                                 |
+|   5   |  shared  | reusable features<br>(like utils)                                   |
+
+---
+
+## How to start
+
+1. Install dependencies
+
+```sh
+npm install
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+2. Start dev server
 
-```js
-// eslint.config.js
-import reactX from "eslint-plugin-react-x";
-import reactDom from "eslint-plugin-react-dom";
-
-export default tseslint.config([
-  globalIgnores(["dist"]),
-  {
-    files: ["**/*.{ts,tsx}"],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs["recommended-typescript"],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ["./tsconfig.node.json", "./tsconfig.app.json"],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-]);
+```sh
+npm run dev
 ```

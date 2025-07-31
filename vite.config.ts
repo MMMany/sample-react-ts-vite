@@ -22,7 +22,7 @@ export default defineConfig(({ mode }) => {
     plugins,
     resolve: {
       alias: {
-        "@": path.resolve(__dirname, "./src"),
+        "#": path.resolve(__dirname, "./src"),
       },
     },
     server: {
@@ -30,11 +30,11 @@ export default defineConfig(({ mode }) => {
     },
     test: {
       environment: "jsdom",
-      setupFiles: ["tests/setup.ts"],
+      setupFiles: ["src/tests/setup.ts"],
       coverage: {
         enabled: true,
         include: ["src/**/*"],
-        exclude: ["src/main.tsx", "src/styles/theme.ts", "src/vite-env.d.ts"],
+        exclude: ["src/tests/**/*", "src/app/main.tsx", "src/styles/**/*", "src/vite-env.d.ts"],
         thresholds: {
           lines: 80,
           functions: 80,

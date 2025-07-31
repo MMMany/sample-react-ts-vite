@@ -5,7 +5,7 @@
 stats.html
 
 ### Vitest ###
-tests/__screenshots__
+src/tests/__screenshots__
 
 ### Linux ###
 *~

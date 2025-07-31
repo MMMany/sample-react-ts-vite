@@ -1,5 +1,6 @@
+/* eslint-disable */
 import { describe, it, expect, beforeEach } from "vitest";
-import useCounter from "@/stores/counter";
+import useCounter from "#/shared/stores/counter";
 import { act } from "@testing-library/react";
 
 describe("useCounter Store", () => {

@@ -1,8 +1,9 @@
+/* eslint-disable */
 import { render, screen, cleanup } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import { describe, it, expect, beforeEach, afterEach } from "vitest";
-import App from "@/App";
-import useCounter from "@/stores/counter";
+import App from "#/app/App";
+import useCounter from "#/shared/stores/counter";
 
 // Reset Zustand store before each test
 beforeEach(() => {
